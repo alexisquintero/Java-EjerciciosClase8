@@ -15,9 +15,7 @@ public class MySQL {
 	
 	
 	private static MySQL instance = null;
-	protected MySQL() {
-		
-		   }
+
 	public static MySQL getInstance() {
 		if(instance == null) {
 			
@@ -68,11 +66,14 @@ public class MySQL {
 		 try {
 			Connect();
 			
-			pstm = myConn.prepareStatement("UPDATE personas SET nombre = ?, apellido = ?, email = ?");
+			pstm = myConn.prepareStatement("UPDATE persona SET nombre = ?, apellido = ?, email = ? WHERE dni = ?");
 			
 			pstm.setString(1, p.getsNombre());
 			pstm.setString(2, p.getsApellido());
 			pstm.setString(3, p.getsEmail());
+			pstm.setInt(4, p.getiDni());
+			
+			pstm.executeUpdate();                      
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

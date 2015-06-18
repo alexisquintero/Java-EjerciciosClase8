@@ -4,18 +4,22 @@ import java.awt.EventQueue;
 
 import controlador.*;
 import entidades.*;
+
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -295,9 +299,9 @@ public class Interfaz {
 			Respuesta.setText(resp);
 			
 		} else {
-			
-			dni = (Integer.parseInt(txtDni.getText()));
-
+				
+		    	dni = (Integer.parseInt(txtDni.getText()));	
+					
 		}
 		
 					
@@ -332,8 +336,9 @@ public class Interfaz {
 			return;
 			
 		} else {
-			int temp = Integer.parseInt(txtDni.getText());
-			pUI.setiDni(temp); 
+			
+				int temp = Integer.parseInt(txtDni.getText());
+				pUI.setiDni(temp); 						
 
 		}
 		
@@ -381,4 +386,25 @@ public class Interfaz {
 		Respuesta.setText(resp);
 		btnActualizarClick();
 	}
+	
+	
+/*	public boolean isInteger(String string) {
+	    try {
+	        Integer.valueOf(string);
+	        return true;
+	    } catch (NumberFormatException e) {
+	        return false;
+	    }
+	}
+	
+	public static boolean isParsable(String input){
+	    boolean parsable = true;
+	    try{
+	        Integer.parseInt(input);
+	    }catch(NumberFormatException e){
+	        parsable = false;
+	    }
+	    return parsable;
+	}
+*/
 }

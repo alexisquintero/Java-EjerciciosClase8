@@ -13,7 +13,7 @@ public class CapaDatos {
 		Persona personaBusqueda = this.BuscaPersona(p.getiDni());
 		String resp = "Valor inicial";
 		
-		if (personaBusqueda == null) {
+		if (personaBusqueda.getsApellido() == null) {
 			
 			db.AgregaPersona(p);
 			resp = p.getsNombre() + " " + p.getsApellido() + " agregado.";

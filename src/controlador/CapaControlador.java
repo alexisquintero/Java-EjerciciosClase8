@@ -1,33 +1,34 @@
 package controlador;
 
 import datos.*;
+
 import entidades.*;
 import java.util.ArrayList;
 
 public class CapaControlador {
 	
-	CapaDatos cd = new CapaDatos();
+	CapaDatosPersona cda = new CapaDatosPersona();
 	
 	public String CreaModificaPersona(Persona p){	
 			
-		return cd.CreaModificaPersona(p);
+		return cda.CreaModificaPersona(p);
 	}
 	
 	public Persona BuscaPersona(int dni){
 		
-		return cd.BuscaPersona(dni);
+		return cda.BuscaPersona(dni);
 		
 	}
 	
 	public String BajaPersona(int dni){
 		
-		return cd.BajaPersona(dni);
+		return cda.BorrarPersona(dni);
 		
 	}
 	
 	public ArrayList<Persona> Listado(){
 		
-		return cd.Listado();
+		return cda.Listado();
 		
 	}
 	

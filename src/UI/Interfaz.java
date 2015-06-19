@@ -73,6 +73,14 @@ public class Interfaz {
 		frame.getContentPane().setLayout(null);
 		
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_F5){
+					btnActualizarClick();
+				}
+			}
+		});
 		txtNombre.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -216,7 +224,7 @@ public class Interfaz {
 			new Object[][] {
 			},
 			new String[] {
-				"Apellido", "Nombre", "DNI", "Email"
+				"ID", "Apellido", "Nombre", "DNI", "Email"
 			}
 		));
 		
@@ -226,9 +234,8 @@ public class Interfaz {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					btnClearClick();
-				}
-			}
-		});
+				}													
+			}});
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnClearClick();
@@ -251,17 +258,18 @@ public class Interfaz {
 		
 		ArrayList<Persona> al = new ArrayList<Persona>();
 		al = cc.Listado();
-		String[][] tabla = new String[al.size()][4];
+		String[][] tabla = new String[al.size()][5];
 		DefaultTableModel model = (DefaultTableModel) listado.getModel();
 
 		model.setRowCount(0);
 		
 		for (int i = 0; i < al.size(); i++) {
 			
-			tabla[i][0] = al.get(i).getsApellido();
-			tabla[i][1] = al.get(i).getsNombre();
-			tabla[i][2] = String.valueOf(al.get(i).getiDni());
-			tabla[i][3] = al.get(i).getsEmail();
+			tabla[i][1] = al.get(i).getsApellido();
+			tabla[i][2] = al.get(i).getsNombre();
+			tabla[i][3] = String.valueOf(al.get(i).getiDni());
+			tabla[i][4] = al.get(i).getsEmail();
+			tabla[i][0] = String.valueOf(al.get(i).getiIdPersona());
 			model.addRow(tabla[i]);
 			
 		}
@@ -301,6 +309,7 @@ public class Interfaz {
 			
 			resp = "Ingrese un número de DNI";
 			Respuesta.setText(resp);
+			return;
 			
 		} else if(tryParseInt(txtDni.getText())){
 				
@@ -409,24 +418,4 @@ public class Interfaz {
 	          return false;  
 	      }  
 	}
-	
-/*	public boolean isInteger(String string) {
-	    try {
-	        Integer.valueOf(string);
-	        return true;
-	    } catch (NumberFormatException e) {
-	        return false;
-	    }
-	}
-	
-	public static boolean isParsable(String input){
-	    boolean parsable = true;
-	    try{
-	        Integer.parseInt(input);
-	    }catch(NumberFormatException e){
-	        parsable = false;
-	    }
-	    return parsable;
-	}
-*/
 }

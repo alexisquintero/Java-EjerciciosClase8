@@ -277,11 +277,15 @@ public class Interfaz {
 			resp = "Ingrese un número de DNI";
 			Respuesta.setText(resp);
 			
-		}else {
+		}else if(tryParseInt(txtDni.getText())){
 			
 			resp = cc.BajaPersona(Integer.parseInt(txtDni.getText()));
 			Respuesta.setText(resp);
 			
+		} else {
+			Respuesta.setText("DNI debe ser un número");
+			txtDni.setText("DNI");
+			return;
 		}
 		
 		
@@ -298,12 +302,15 @@ public class Interfaz {
 			resp = "Ingrese un número de DNI";
 			Respuesta.setText(resp);
 			
-		} else {
+		} else if(tryParseInt(txtDni.getText())){
 				
 		    	dni = (Integer.parseInt(txtDni.getText()));	
 					
+		} else {
+			Respuesta.setText("DNI debe ser un número");
+			txtDni.setText("DNI");
+			return;
 		}
-		
 					
 		pUI = cc.BuscaPersona(dni);
 		
@@ -335,11 +342,15 @@ public class Interfaz {
 			Respuesta.setText(resp);
 			return;
 			
-		} else {
+		} else if(tryParseInt(txtDni.getText())){
 			
 				int temp = Integer.parseInt(txtDni.getText());
 				pUI.setiDni(temp); 						
 
+		}else {
+			Respuesta.setText("DNI debe ser un número");
+			txtDni.setText("DNI");
+			return;
 		}
 		
 		if (txtNombre.getText().equals("Nombre")) {
@@ -387,6 +398,17 @@ public class Interfaz {
 		btnActualizarClick();
 	}
 	
+	boolean tryParseInt(String value)  
+	{  
+	     try  
+	     {  
+	         Integer.parseInt(value);  
+	         return true;  
+	      } catch(NumberFormatException nfe)  
+	      {  
+	          return false;  
+	      }  
+	}
 	
 /*	public boolean isInteger(String string) {
 	    try {

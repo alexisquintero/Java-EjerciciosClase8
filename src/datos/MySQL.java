@@ -22,15 +22,23 @@ public class MySQL {
 		
 	}
 	 
-	 public Connection Connect() throws SQLException{
+	 public Connection Connect(){
 		 
-		 String url = "jdbc:mysql://localhost:3306/Java";
-		 String user = "Java";
-		 String password = "Java";
+		 Connection conn = null;
 		 
-		 return DriverManager.getConnection(url, user, password);
+		 try{
+			 
+			 String url = "jdbc:mysql://localhost:3306/Java";
+			 String user = "Java";
+			 String password = "Java";
 		 
+			 conn = DriverManager.getConnection(url, user, password);
+			 
+		 } catch(SQLException e){
+			 e.printStackTrace();	
+		 }
 		 
+		 return conn;
 	 }
 
 	 

@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import net.miginfocom.swing.MigLayout;
 
 
 public class Interfaz {
@@ -70,7 +71,6 @@ public class Interfaz {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 495);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		txtNombre = new JTextField();
 		txtNombre.addKeyListener(new KeyAdapter() {
@@ -91,9 +91,9 @@ public class Interfaz {
 				txtNombre.setText(txtNombre.getText().length() == 0?"Nombre":txtNombre.getText());
 			}
 		});
+		frame.getContentPane().setLayout(new MigLayout("", "[89px][89px][10px][142.00px,grow][20px,grow][70px]", "[20px][20px][20px][23px][20px][232px,grow,fill][22px,bottom]"));
 		txtNombre.setText("Nombre");
-		txtNombre.setBounds(10, 11, 188, 20);
-		frame.getContentPane().add(txtNombre);
+		frame.getContentPane().add(txtNombre, "cell 0 0 2 1,growx,aligny top");
 		txtNombre.setColumns(10);
 		
 		txtApellido = new JTextField();
@@ -108,8 +108,7 @@ public class Interfaz {
 			}
 		});
 		txtApellido.setText("Apellido");
-		txtApellido.setBounds(208, 11, 216, 20);
-		frame.getContentPane().add(txtApellido);
+		frame.getContentPane().add(txtApellido, "cell 2 0 4 1,growx,aligny top");
 		txtApellido.setColumns(10);
 		
 		txtDni = new JTextField();
@@ -124,8 +123,7 @@ public class Interfaz {
 			}
 		});
 		txtDni.setText("DNI");
-		txtDni.setBounds(10, 73, 146, 20);
-		frame.getContentPane().add(txtDni);
+		frame.getContentPane().add(txtDni, "cell 0 2 2 1,growx,aligny top");
 		txtDni.setColumns(10);
 		
 		txtEmail = new JTextField();
@@ -140,8 +138,7 @@ public class Interfaz {
 			}
 		});
 		txtEmail.setText("Email");
-		txtEmail.setBounds(10, 42, 414, 20);
-		frame.getContentPane().add(txtEmail);
+		frame.getContentPane().add(txtEmail, "cell 0 1 6 1,growx,aligny top");
 		txtEmail.setColumns(10);
 		
 		btnGuardar = new JButton("Guardar");
@@ -159,8 +156,7 @@ public class Interfaz {
 				btnGuardarClick();
 			}
 		});
-		btnGuardar.setBounds(10, 104, 89, 23);
-		frame.getContentPane().add(btnGuardar);
+		frame.getContentPane().add(btnGuardar, "cell 0 3,grow");
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.addKeyListener(new KeyAdapter() {
@@ -176,8 +172,7 @@ public class Interfaz {
 				btnBuscarClick();
 			}
 		});
-		btnBuscar.setBounds(109, 104, 89, 23);
-		frame.getContentPane().add(btnBuscar);
+		frame.getContentPane().add(btnBuscar, "cell 1 3,grow");
 		
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
@@ -185,13 +180,11 @@ public class Interfaz {
 				btnBorrarClick();
 			}
 		});
-		btnBorrar.setBounds(335, 104, 89, 23);
-		frame.getContentPane().add(btnBorrar);
+		frame.getContentPane().add(btnBorrar, "cell 5 3,alignx right,aligny top");
 		
 		Respuesta = new JTextField();
 		Respuesta.setEditable(false);
-		Respuesta.setBounds(10, 138, 414, 20);
-		frame.getContentPane().add(Respuesta);
+		frame.getContentPane().add(Respuesta, "cell 0 4 6 1,growx,aligny top");
 		Respuesta.setColumns(10);
 		
 		btnActualizar = new JButton("Actualizar");
@@ -208,12 +201,10 @@ public class Interfaz {
 				btnActualizarClick();
 			}
 		});
-		btnActualizar.setBounds(247, 412, 104, 22);
-		frame.getContentPane().add(btnActualizar);
+		frame.getContentPane().add(btnActualizar, "cell 4 6 2 1,alignx right");
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 169, 414, 232);
-		frame.getContentPane().add(scrollPane);
+		frame.getContentPane().add(scrollPane, "cell 0 5 6 1,grow");
 		
 		listado = new JTable();
 		listado.setFillsViewportHeight(true);
@@ -241,8 +232,7 @@ public class Interfaz {
 				btnClearClick();
 			}
 		});
-		btnClear.setBounds(208, 104, 23, 23);
-		frame.getContentPane().add(btnClear);
+		frame.getContentPane().add(btnClear, "cell 2 3,alignx trailing,growy");
 	}
 	
 	private void btnClearClick(){
